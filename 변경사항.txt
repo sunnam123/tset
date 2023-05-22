@@ -1,0 +1,45 @@
+1. domain/student
+
+필드 private Double avg; 추가
+
+생성자 this.avg = student.avg(kor,eng,math); 추가
+
+2. domain/StudentRepository
+
+findById 메서드의 자료형이 List였던것을
+Optional<student>로 변경.
+
+---------------------------------------------------
+public Optional<student> findById(Long id){
+        return Optional.ofNullable(store.get(id));
+    }
+----------------------------------------------------
+확실하진 않음..
+
+
+3. domain/StudentRepository
+
+findByName 메서드 추가...
+
+4. resources/templates/students        "s"가 들어간 파일
+
+<tr> 이하 구문에서
+student s   <- s들어간 students 전부 s 삭제
+
+5. controller/studentcontroller
+
+필드 private final StudentRepository StudentRepository;
+       객체 이름을 studentRepository에서  repository로 변경
+----------------------------------------------------------------
+변경 후
+
+필드 private final StudentRepository repository;
+
+이하 같은 객체이름을 사용한 메서드도 전부 위와 같은 변경 적용
+
+----------------------------------------------------------------------
+
+변경하면서 변경사항을 작성 한게 아니라 ㅠㅠ
+변경하다가 성공한거 보고 바꾼 거 적은 거라서 빠진 게 있을 수 있습니다..
+
+

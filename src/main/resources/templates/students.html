@@ -1,0 +1,69 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <link href="../css/bootstrap.min.css"
+        th:href="@{/css/bootstrap.min.css}"
+        rel="stylesheet">
+</head>
+<body>
+<div class="container" style="max-width: 600px">
+  <div class="py-5 text-center">
+    <h2>학생 목록</h2>
+  </div>
+  <div class="row">
+    <div class="col">
+      <button class="btn btn-primary float-end"
+              onclick="location.href='addForm.html'"
+              th:onclick="|location.href='@{/addForm}'|"
+              type="button">학생 등록</button>
+    </div>
+    <div class="col">
+      <button class="btn btn-primary float-end"
+              onclick="location.href='search.html'"
+              th:onclick="|location.href='@{/searchForm}'|"
+              type="button">학생 검색</button>
+    </div>
+    <div class="col">
+      <button class="btn btn-primary float-end"
+              onclick="location.href='addForm.html'"
+              th:onclick="|location.href='@{/sorted}'|"
+              type="button">평균 정렬</button>
+    </div>
+    <div class="col">
+      <button class="btn btn-primary float-end"
+              onclick="location.href='home.html'"
+              th:onclick="|location.href='@{/home}'|"
+              type="button">처음으로</button>
+    </div>
+  </div>
+  <hr class="my-4">
+  <div>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>학생 이름</th>
+        <th>국어 점수</th>
+        <th>영어 점수</th>
+        <th>수학 점수</th>
+        <th>평균</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr th:each="student : ${student}">
+        <td><a href="student.html"
+               th:href="@{/student/{studentId}(studentId=${student.Id})}" th:text="${student.Id}">1</a></td>
+        <td><a href="student.html"
+               th:href="@{/student/{studentId}(studentId=${student.Id})}" th:text="${student.name}">홍길동</a></td>
+        <td th:text="${student.kor}">60</td>
+        <td th:text="${student.eng}">65</td>
+        <td th:text="${student.math}">50</td>
+        <td th:text="${student.avg}">30</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div> <!-- /container -->
+</body>
+</html>

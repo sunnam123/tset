@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <link href="../css/bootstrap.min.css"
+        th:href="@{/css/bootstrap.min.css}"
+        rel="stylesheet">
+  <style>
+.container {
+max-width: 560px;
+}
+</style>
+</head>
+<body>
+<div class="container">
+  <div class="py-5 text-center">
+    <h2>학적부</h2>
+  </div>
+  <div>
+    <label for="id">학생 ID</label>
+    <input type="text" id="id" name="id" class="form-control"
+           value="1" th:value="${student.Id}" readonly>
+  </div>
+  <div>
+    <label for="name">학생 이름</label>
+    <input type="text" id="name" name="name" class="form-control"
+           value="곽한구" th:value="${student.name}" readonly>
+  </div>
+  <div>
+    <label for="kor">국어점수</label>
+    <input type="text" id="kor" name="kor" class="form-control"
+           value="100" th:value="${student.kor}" readonly>
+  </div>
+  <div>
+    <label for="eng">영어점수</label>
+    <input type="text" id="eng" name="eng" class="form-control"
+           value="100" th:value="${student.eng}" readonly>
+  </div>
+  <div>
+    <label for="math">수학점수</label>
+    <input type="text" id="math" name="math" class="form-control"
+           value="100" th:value="${student.math}" readonly>
+  </div>
+  <div>
+    <label for="avg">평균점수</label>
+    <input type="text" id="avg" name="avg" class="form-control"
+           value="100" th:value="${student.avg}" readonly>
+  </div>
+  <hr class="my-4">
+  <div class="row">
+    <div class="col">
+      <button class="w-100 btn btn-primary btn-lg"
+              onclick="location.href='editForm.html'"
+              th:onclick="|location.href='@{/student/{studentId}/edit(studentId=${student.id})}'|"
+              type="button">학생 수정</button>
+    </div>
+    <div class="col">
+      <button class="w-100 btn btn-secondary btn-lg"
+              onclick="location.href='students.html'"
+              th:onclick="|location.href='@{/}'|"
+              type="button">목록으로</button>
+    </div>
+  </div>
+</div> <!-- /container -->
+</body>
+</html>
