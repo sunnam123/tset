@@ -12,6 +12,8 @@ public class StudentRepository {
 
     public student save(student student){
         student.setId(++sequence);
+        student.setAvg(pr.studentmange.domain.student.avg(student.getKor(), student.getEng(), student.getMath()));
+
         store.put(student.getId(), student);
         return student;
     }

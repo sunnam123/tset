@@ -16,34 +16,34 @@ max-width: 560px;
   <div class="py-5 text-center">
     <h2>학생 정보 수정 폼</h2>
   </div>
-  <form action="editForm.html" th:action method="post">
+  <form action="editForm.html" th:action th:object="${student}" method="post">
     <div>
       <label for="Id">학생 ID</label>
-      <input type="text" id="Id" name="Id" class="form-control" value="1" th:value="${student.Id}" readonly>
+      <input type="text" th:field="*{id}" class="form-control" value="1" th:value="${student.Id}" readonly>
     </div>
     <div>
       <label for="name">학생 이름</label>
-      <input type="text" id="name" name="name" class="form-control"
+      <input type="text" th:field="*{name}" class="form-control"
              value="학생A" th:value="${student.name}">
     </div>
     <div>
       <label for="kor">국어 점수</label>
-      <input type="text" id="kor" name="kor" class="form-control"
+      <input type="text" th:field="*{kor}" class="form-control"
              value="80" th:value="${student.kor}">
     </div>
     <div>
       <label for="eng">영어 점수</label>
-      <input type="text" id="eng" name="eng" class="form-control"
+      <input type="text" th:field="*{eng}" class="form-control"
              value="80" th:value="${student.eng}">
     </div>
     <div>
       <label for="math">수학 점수</label>
-      <input type="text" id="math" name="math" class="form-control"
+      <input type="text" th:field="*{math}" class="form-control"
              value="80" th:value="${student.math}">
     </div>
     <div>
       <label for="avg">평균점수</label>
-      <input type="text" id="avg" name="avg" class="form-control"
+      <input type="text" th:field="*{avg}" class="form-control"
              value="100" th:value="${student.avg}" readonly>
     </div>
     <hr class="my-4">

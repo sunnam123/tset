@@ -2,6 +2,7 @@ package pr.studentmange.controller;
 
 import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -10,7 +11,7 @@ import pr.studentmange.domain.student;
 
 import java.util.List;
 import java.util.Optional;
-
+@Slf4j
 @Controller
 @RequiredArgsConstructor
 public class studentcontoller {
@@ -30,7 +31,10 @@ public class studentcontoller {
     @GetMapping("/student/{studentId}")
     public String student(@PathVariable Long studentId, Model model) {
         student student = repository.findById(studentId).get();
+        student.setAvg(student.getAvg());
+
         model.addAttribute("student",student);
+
         return "student";
     }
 
@@ -55,14 +59,16 @@ public class studentcontoller {
 
     // 학생 등록
     @GetMapping("/addForm")
-    public String addForm(){
+    public String addForm(Model model){
+        log.info("addForm] Get방식 addForm 메소드 시작");
+        model.addAttribute("student", new student());
         return "addForm";
     }
     @PostMapping("/addForm")
     public String add(student student){
         repository.save(student);
 
-        return "student";
+        return "redirect:/student/"+student.getId();
     }
 
     // 학생 등록 끝

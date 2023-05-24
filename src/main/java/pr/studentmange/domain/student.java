@@ -16,7 +16,12 @@ public class student {
         this.kor = kor;
         this.eng = eng;
         this.math = math;
-        this.avg = student.avg(kor,eng,math);
+        this.avg = this.avg(kor,eng,math);
+    }
+
+    public student() {
+
+
     }
 
     public static Double avg(Integer kor,Integer eng,Integer math){
