@@ -16,7 +16,7 @@ public class StudentDataInit {
 
     @EventListener(ApplicationReadyEvent.class)
     public void StudentDatainit(){
-        studentRepository.save(new student("김씨", 80, 50, 70));
+        studentRepository.save(new student("오씨", 80, 50, 70));
         studentRepository.save(new student("이씨", 60, 50, 50));
     }
 
