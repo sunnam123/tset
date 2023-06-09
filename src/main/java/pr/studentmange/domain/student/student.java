@@ -1,4 +1,4 @@
-package pr.studentmange.domain;
+package pr.studentmange.domain.student;
 
 import lombok.Data;
 

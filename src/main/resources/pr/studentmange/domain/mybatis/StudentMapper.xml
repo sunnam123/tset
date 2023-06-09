@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace에 Mapper 인터페이스를 지정해야 한다. -->
+<mapper namespace="pr.studentmange.domain.mybatis.StudentMapper">
+    <insert id="save"><selectKey keyProperty="id" resultType="java.lang.Long" order="BEFORE">
+        SELECT studnet_seq.NEXTVAL FROM DUAL
+    </selectKey>
+        INSERT INTO student (id, name, kor, eng, math, avg)
+        VALUES (#{id}, #{name}, #{kor}, #{eng}, #{math}, #{avg})
+    </insert>
+    <update id="update">
+        update student
+        set name=#{update.name},
+            kor=#{update.kor},
+            eng=#{update.eng},
+            math=#{update.math}
+        where id = #{id}
+    </update>
+
+    <select id="findById" resultType="student">
+        select id, name, kor, eng, math, avg
+        from student
+        where id = #{id}
+    </select>
+
+    <select id="findByName" resultType="student">
+        select id, name, kor, eng, math, avg
+        from student
+        where name = #{name}
+    </select>
+
+    <select id="findAll" resultType="student">
+        select *
+        from student
+    </select>
+
+    <select id="sortedByAvg" resultType="student">
+        select *
+        from student
+        order by avg desc;
+    </select>
+
+</mapper>

@@ -1,24 +1,24 @@
 package pr.studentmange.controller;
 
-import jakarta.annotation.PostConstruct;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import pr.studentmange.domain.StudentRepository;
-import pr.studentmange.domain.student;
+import pr.studentmange.domain.student.StudentInterface;
+import pr.studentmange.domain.student.StudentRepository;
+import pr.studentmange.domain.student.student;
 
 import java.util.List;
-import java.util.Optional;
+
 @Slf4j
 @Controller
 @RequiredArgsConstructor
 public class studentcontoller {
-    private final StudentRepository repository;
+    private final StudentInterface repository;
 
     // 시작 페이지
-    @GetMapping("/")
+    @GetMapping("/students")
     public String home(Model model){
         List<student> students = repository.findAll();
         model.addAttribute("student",students);
@@ -99,11 +99,11 @@ public class studentcontoller {
     }
 
 
-    @PostConstruct
-    public void init() {
-        repository.save(new student("김씨", 80, 50, 70));
-        repository.save(new student("이씨", 60, 50, 50));
-    }
+//    @PostConstruct
+//    public void init() {
+//        repository.save(new student("김씨", 80, 50, 70));
+//        repository.save(new student("이씨", 60, 50, 50));
+//    }
 
 
 }

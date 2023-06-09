@@ -1,8 +1,9 @@
 package pr.studentmange.domain;
 
 import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import pr.studentmange.domain.student.StudentRepository;
+import pr.studentmange.domain.student.student;
 
 import java.util.List;
 
@@ -12,10 +13,7 @@ public class StudentRepositoryTest {
 
     StudentRepository repository = new StudentRepository();
 
-    @AfterEach
-    public void afterEach(){
-        repository.clearStore();
-    }
+
 
     @Test
     public void save() {

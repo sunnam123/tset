@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!-- namespace에 Mapper 인터페이스를 지정해야 한다. -->
+<mapper namespace="pr.studentmange.domain.mybatis.MemberMapper">
+    <insert id="save"><selectKey keyProperty="id" resultType="java.lang.Long" order="BEFORE">
+        SELECT member_seq.NEXTVAL FROM DUAL
+    </selectKey>
+        INSERT INTO member (id, login_id, password, name)
+        VALUES (#{id}, #{loginId}, #{password}, #{name})
+    </insert>
+    <select id="findByName" resultType="Member">
+        select login_id, name
+        from member
+        where Name = #{Name}
+    </select>
+    <select id="findByLoginId" resultType="Member">
+        select id, name
+        from member
+        where logind_id=#{loginId}
+    </select>
+
+
+</mapper>
